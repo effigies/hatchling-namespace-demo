@@ -11,8 +11,8 @@ defaults:
 jobs:
   build:
     runs-on: ${{ matrix.os }}
-    fail-fast: false
     strategy:
+      fail-fast: false
       matrix:
         os: ["ubuntu-latest", "macos-latest", "windows-latest"]
         base: ["base/", "-e base/"]
