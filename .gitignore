@@ -1,0 +1,4 @@
+.*.swp
+dist/
+_version.py
+__pycache__
