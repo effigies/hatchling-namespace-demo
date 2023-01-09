@@ -1,6 +1,6 @@
 [build-system]
-requires = ["flit_core >=3.2,<4"]
-build-backend = "flit_core.buildapi"
+requires = ["hatchling", "hatch-vcs"]
+build-backend = "hatchling.build"
 
 [project]
 name = "myproj-task1"
@@ -8,5 +8,9 @@ requires-python = ">=3.7"
 version = "1.0"
 description = "Namespace tests - tasks"
 
-[tool.flit.module]
-name = "myproj.tasks.task1"
+[tool.hatch.version]
+source = "vcs"
+raw-options = { root = ".." }
+
+[tool.hatch.build.hooks.vcs]
+version-file = "myproj/tasks/task1/_version.py"
