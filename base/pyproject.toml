@@ -14,3 +14,6 @@ raw-options = { root = ".." }
 
 [tool.hatch.build.hooks.vcs]
 version-file = "myproj/_version.py"
+
+[tool.hatch.build.targets.wheel]
+packages = ["myproj"]

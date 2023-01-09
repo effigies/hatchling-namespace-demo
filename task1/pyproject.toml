@@ -14,3 +14,7 @@ raw-options = { root = ".." }
 
 [tool.hatch.build.hooks.vcs]
 version-file = "myproj/tasks/task1/_version.py"
+
+[tool.hatch.build.targets.wheel]
+packages = ["myproj"]
+include-only = ["myproj/tasks/task1"]
