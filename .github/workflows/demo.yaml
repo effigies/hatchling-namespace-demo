@@ -1,3 +1,5 @@
+name: Demo
+
 on: [push, pull_request]
 
 concurrency:
@@ -9,7 +11,7 @@ defaults:
     shell: bash
 
 jobs:
-  build:
+  demo:
     runs-on: ${{ matrix.os }}
     strategy:
       fail-fast: false
@@ -27,7 +29,8 @@ jobs:
         env:
           BASE: ${{ matrix.base }}
           TASK: ${{ matrix.task }}
-      - run: |
+      - name: Demonstrate locations and versions of imports
+        run: |
           import myproj
           import myproj.tasks.task1
 
