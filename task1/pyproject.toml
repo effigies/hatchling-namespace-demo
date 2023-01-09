@@ -5,8 +5,8 @@ build-backend = "hatchling.build"
 [project]
 name = "myproj-task1"
 requires-python = ">=3.7"
-version = "1.0"
 description = "Namespace tests - tasks"
+dynamic = ["version"]
 
 [tool.hatch.version]
 source = "vcs"
