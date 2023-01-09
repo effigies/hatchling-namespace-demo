@@ -18,24 +18,28 @@ jobs:
       matrix:
         os: ["ubuntu-latest", "macos-latest", "windows-latest"]
         base: ["base/", "-e base/"]
-        task: ["task1/", "-e task1/"]
+        task1: ["task1/", "-e task1/"]
+        # task2 is always fully installed
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-python@v4
         with:
           python-version: 3
       - run: pip install --upgrade pip
-      - run: pip install $BASE $TASK
+      - run: pip install $BASE $TASK1 ./task2
         env:
           BASE: ${{ matrix.base }}
-          TASK: ${{ matrix.task }}
+          TASK1: ${{ matrix.task1 }}
       - name: Demonstrate locations and versions of imports
         run: |
           import myproj
           import myproj.tasks.task1
+          import myproj.tasks.task2
 
           print(myproj)
           print(myproj.__version__)
           print(myproj.tasks.task1)
           print(myproj.tasks.task1.__version__)
+          print(myproj.tasks.task2)
+          print(myproj.tasks.task2.__version__)
         shell: python
