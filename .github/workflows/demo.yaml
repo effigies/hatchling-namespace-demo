@@ -1,6 +1,12 @@
 name: Demo
 
-on: [push, pull_request]
+on:
+  push:
+  pull_request:
+  schedule:
+    # run monthly on the first day of the month
+    - cron: '30 12 1 * *'
+  workflow_dispatch: # allow to be run on-demand
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
